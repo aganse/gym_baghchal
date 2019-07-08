@@ -1,3 +1,3 @@
 import pybaghchal
 
-pybaghchal.testme()
+pybaghchal.test1()
