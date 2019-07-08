@@ -1,0 +1,3 @@
+import pybaghchal
+
+pybaghchal.testme()

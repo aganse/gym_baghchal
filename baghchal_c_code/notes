@@ -1,0 +1,27 @@
+Tentative list of bugs to fix...
+
+1. when a tiger has no move, is it doing wrong thing and moving anyway?
+
+2. goats need to know they've won - game needs to know that tigers cannot move,
+whether human or computer is playing tiger
+
+3. if hplayer is goat, you can enter "d3,c2" without a complaint -
+it will only use the d3 part, but it should probably give an error...
+
+4. for checking for win - maybe change check_for_win() into
+check_for_goats_all_taken() (or probably just replace with its "if" statemnt)
+and have determine...() return a state for NO_FURTHER_TIGER_MOVES.  
+but needs to be a way that that's also checked after the computer's move
+is done... maybe keeping all the checks within check_for_win() is still
+a good idea after all.  Anyway, so there's the issue.
+
+5. concerns that it's mostly Nepali folks who've been playing with this
+thing online, but online access is so expensive over there that I should
+give up this CGI approach and do a standalone program.
+
+6. 20th goat can't be played?  Can't make goat moves after 21st round?
+
+7. tiger moving into goat-occupied position after following moves?
+e3,e2,d1,c1,a3,a4,d5,e5,e1,d2,c2,d3,b5
+
+
