@@ -7,6 +7,9 @@ __pycache__/
 *.so
 *.a
 *.o
+baghchal
+baghchalw
+pybaghchal
 
 # Distribution / packaging
 .Python

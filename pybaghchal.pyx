@@ -11,7 +11,6 @@ cpdef py_validateParams(str inputline):
     cdef int move[2]
     cdef int boardarray[25]
     cdef int status
-    #print('inputline: '+inputline)
     status = validateParams( inputline.encode("UTF-8"), humanplayer, skill, gameround, boardarray, goatstaken, move )
     return humanplayer[0], skill[0], gameround[0], boardarray, goatstaken[0], move
 
@@ -25,9 +24,11 @@ cpdef py_validateParams(str inputline):
 def testme():
     inputline = 'player=T&skill=1&round=002&boardarray=1000100000100002000000001&goatstaken=00&move=a1%2Cb1'
     humanplayer, skill, gameround, boardarray, goatstaken, move = py_validateParams(inputline)
-    print('humanplayer='+str(humanplayer))
-    print('skill='+str(skill))
-    print('gameround='+str(gameround))
-    print('goatstaken='+str(goatstaken))
-    #print(boardarray, move)
+    print('  inputline: '+inputline)
+    print('humanplayer: '+chr(humanplayer))
+    print('      skill: '+str(skill))
+    print('  gameround: '+str(gameround))
+    print(' goatstaken: '+str(goatstaken))
+    print(' boardarray: '+''.join(map(str,boardarray)))
+    print(f'       move: {str(move[0])},{str(move[1])}')
 
