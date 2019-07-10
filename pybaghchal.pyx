@@ -41,3 +41,15 @@ def test1():
     print(' boardarray: '+''.join(map(str,boardarray)))
     print(f'       move: {str(move[0])},{str(move[1])}')
 
+
+def test2():
+    inputline = 'player=T&skill=1&round=001&boardarray=1020100000000000000010001&goatstaken=00&move=a1%2Cb1'
+    humanplayer, skill, gameround, boardarray, goatstaken, move = py_validateParams(inputline)
+    print('  inputline: '+inputline)
+    print('humanplayer: '+chr(humanplayer))
+    print('      skill: '+str(skill))
+    print('  gameround: '+str(gameround))
+    print(' goatstaken: '+str(goatstaken))
+    print(' boardarray: '+''.join(map(str,boardarray)))
+    print(f'       move: {str(move[0])},{str(move[1])}')
+
