@@ -35,7 +35,7 @@
 #include <string.h>
 #include <time.h>
 #include <ctype.h>
-#include "baghChal.h"
+#include "baghchal.h"
 
 
 int main( int argc, char *argv[] ) {

@@ -30,12 +30,12 @@
 #define BC_CGI_PATH "http://www.mysite.com/~myaccount/cgi-bin/baghchal"
 
 struct moveto {
-  char Pos;
-  char CanJumpToPos;
+  int Pos;
+  int CanJumpToPos;
 };
 
 struct boardpoint {
-  char NumCanMoveTo;
+  int NumCanMoveTo;
   struct moveto CanMoveTo[8];
 } GameBoardPos[25];
 

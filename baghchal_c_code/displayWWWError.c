@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "baghChal.h"
+#include "baghchal.h"
 
 int displayWWWError(char errormsg[]) {
     printf("Content-type: text/html\n\n");

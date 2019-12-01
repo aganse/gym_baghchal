@@ -1,4 +1,4 @@
-#include "baghChal.h"
+#include "baghchal.h"
 #include <stdio.h>
 
 int initGameMovementRules() {

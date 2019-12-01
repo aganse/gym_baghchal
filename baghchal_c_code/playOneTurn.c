@@ -1,10 +1,19 @@
 #include <stdlib.h>
+#include <stdio.h>
 #include <time.h>
 #include <math.h>
-#include "baghChal.h"
+#include "baghchal.h"
 
 int playOneTurn( char *humanplayer, int *skill, int *round, int *boardarray,
    int *move, int *complastmove, int *goatstaken, int *winFlag ) {
+
+   /*
+   printf("playone inp:  h=%c, s=%d, r=%d, m=%d-%d, c=%d-%d, g=%d, w=%d\n",
+      *humanplayer, *skill, *round, move[0], move[1], complastmove[0], complastmove[1], *goatstaken, *winFlag);
+   printf("             b=");
+   for(int i=0;i<25;i++) printf("%d",boardarray[i]);
+   printf("\n");
+   */
 
   /* function prototypes */
    int validate_player_move(char *humanplayer, int move[2], int *round,
@@ -33,9 +42,8 @@ int playOneTurn( char *humanplayer, int *skill, int *round, int *boardarray,
   
          /* assign human player's move in gameboard array (& record goat jump
             if applicable) */
-         place_move_in_boardarray(humanplayer, round, move, boardarray,
-            goatstaken);
-  
+         place_move_in_boardarray(humanplayer, round, move, boardarray, goatstaken);
+
          /* see if human player won */
          if( check_for_win(humanplayer, boardarray, goatstaken)==WINNER ) {
             *winFlag=*humanplayer;
@@ -59,7 +67,7 @@ int playOneTurn( char *humanplayer, int *skill, int *round, int *boardarray,
             return GAME_OVER;
          }
       }
-  
+
    }
    else {
       /* If got here, means human player is G on first round, and there was
@@ -71,6 +79,13 @@ int playOneTurn( char *humanplayer, int *skill, int *round, int *boardarray,
    complastmove[1]=move[1];
    (*round)++;
 
+   /*
+   printf("playone out:  h=%c, s=%d, r=%d, m=%d-%d, c=%d-%d, g=%d, w=%d\n",
+      *humanplayer, *skill, *round, move[0], move[1], complastmove[0], complastmove[1], *goatstaken, *winFlag);
+   printf("             b=");
+   for(int i=0;i<25;i++) printf("%d",boardarray[i]);
+   printf("\n");
+   */
 
    return SUCCESSFUL;
 
@@ -81,8 +96,13 @@ int playOneTurn( char *humanplayer, int *skill, int *round, int *boardarray,
 
 
 
-int validate_player_move(char *player, int move[2], int *round,
-   int boardarray[25]) {
+int validate_player_move(char *player, int move[2], int *round, int boardarray[25]) {
+   /*
+   printf("validate:  pl=%c, m=%d-%d, r=%d, b=", *player, move[0], move[1], *round);
+   for(int i=0;i<25;i++) printf("%d",boardarray[i]);
+   printf("\n");
+   */
+
    int i, ok=0;
 
    if( *player=='G' && *round<21 ) {
@@ -96,7 +116,18 @@ int validate_player_move(char *player, int move[2], int *round,
    }
    else if( *player=='T' ) {
       if( boardarray[move[0]]==1 /*(tiger)*/ && boardarray[move[1]]==0 ) {
+         /*
+         printf("move=%d-%d\n", move[0], move[1]);
+         printf("numcanmoveto %d\n", GameBoardPos[0].NumCanMoveTo);
+         printf("numcanmoveto %d\n", GameBoardPos[move[0]].NumCanMoveTo);
+         */
          for( i=0; i<GameBoardPos[move[0]].NumCanMoveTo; i++ )
+            /* why do these printf() lines interfere with stored values & cause trouble?
+            printf("i %d\n", i);
+            printf("canmoveto %d\n", GameBoardPos[move[0]].CanMoveTo[i].Pos);
+            printf("canjumpto %d\n", GameBoardPos[move[0]].CanMoveTo[i].CanJumpToPos);
+            printf("nogoat %d\n", boardarray[ GameBoardPos[move[0]].CanMoveTo[i].Pos ]==2 );
+            */
             if( move[1]==GameBoardPos[move[0]].CanMoveTo[i].Pos ||
                 (move[1]==GameBoardPos[move[0]].CanMoveTo[i].CanJumpToPos &&
                  boardarray[ GameBoardPos[move[0]].CanMoveTo[i].Pos ]==2 )   ) {

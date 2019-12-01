@@ -1,9 +1,9 @@
 # Makefile for BaghChal game (both text-based cmdline version & WWW CGI version)
 CC = gcc
-CFLAGS = -Wall -O -g
+CFLAGS = -Wall -O -g -Wno-format-security
 LIBS = -lm
 
-HEADERS = baghChal.h 
+HEADERS = baghchal.h 
 
 SHLSOURCES = main.c \
              gameInit.c \
@@ -57,8 +57,8 @@ libbc.a: $(PYOBJECTS) $(HEADERS) makefile
 # tar file for shell version
 shltar: 
 	tar cvf baghchal.tar main.c gameInit.c playOneTurn.c displayTextBoard.c \
-		moveStr2Array.c baghChal.h baghchal.readme Makefile notes
+		moveStr2Array.c baghchal.h baghchal.readme Makefile notes
 
 # clear the object files, temp files, and executable from the directory
 clean:
-	rm -f  *.o *%  *~ baghchal
+	rm -f  *.o *%  *~ baghchal pybaghchal libbc.a
