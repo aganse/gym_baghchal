@@ -1,5 +1,6 @@
-#include "baghChal.h"
+#include "baghchal.h"
 #include <stdio.h>
+#include <string.h>
 
 int moveStr2Array ( char *moveString, int *move, int moveStringLen ) {
 

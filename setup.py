@@ -11,6 +11,6 @@ examples_extension = Extension(
 )
 setup(
     name="pybaghchal",
-    ext_modules=cythonize([examples_extension])
+    ext_modules=cythonize([examples_extension], compiler_directives={'language_level' : "3"})
 )
 

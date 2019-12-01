@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "baghChal.h"
+#include "baghchal.h"
 
 int outputHTMLpage(char player, int skill, int round, int boardarray[25],
                     int complastmove[2], int goatstaken, int winFlag) {
