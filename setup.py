@@ -11,6 +11,9 @@ examples_extension = Extension(
 )
 setup(
     name="pybaghchal",
-    ext_modules=cythonize([examples_extension], compiler_directives={'language_level' : "3"})
+    ext_modules=cythonize([examples_extension], compiler_directives={'language_level' : "3"}),
+    install_requires=[
+        'numpy',
+    ],
 )
 
