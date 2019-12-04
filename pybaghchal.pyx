@@ -32,3 +32,4 @@ cpdef py_playOneTurn(char humanplayer, int skill, int gameround, int[:] boardarr
     move_py = np.asarray(move_view)
     complastmove_py = np.asarray(complastmove_view)
     return humanplayer, skill, gameround, boardarray_py, goatstaken, move_py, complastmove_py, winFlag
+
