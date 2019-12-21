@@ -1,5 +1,8 @@
-import numpy as np
+"""Cython interfaces to the original C level BaghChal functions.
+..moduleauthor:: Andy Ganse <andy@ganse.org>
+"""
 
+import numpy as np
 
 cdef extern from "baghchal.h":
     int validateParams( char *inputline, char *humanplayer, int *skill, int *gameround, 
@@ -12,6 +15,8 @@ cdef extern from "baghchal.h":
 
 
 cpdef py_validateParams(str inputline):
+    """Cython interface to the original C level validateParams() function.
+    """
     cdef char humanplayer
     cdef int skill, goatstaken, gameround, status
     cdef int[2] move
@@ -20,6 +25,9 @@ cpdef py_validateParams(str inputline):
     return humanplayer, skill, gameround, boardarray, goatstaken, move
 
 cpdef py_playOneTurn(char humanplayer, int skill, int gameround, int[:] boardarray, int goatstaken, int[:] move, int[:] complastmove, int winFlag):
+    """Cython interface to the original C level playOneTurn() function.
+    This is the central game-playing function that gets called one per turn, covering both tiger and goat moves.
+    """
     cdef int status
     status = initGameMovementRules()
     status = playOneTurn( &humanplayer, &skill, &gameround, &boardarray[0], &move[0], &complastmove[0], &goatstaken, &winFlag )

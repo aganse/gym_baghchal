@@ -1,4 +1,4 @@
-# rl-bagh-chal
+# rl_bagh_chal
 Reinforcement learning applied to Bagh Chal board game
 
 
@@ -21,7 +21,10 @@ pip install .       # now install py_bagh_chal and the rest of its dependencies
 python run_unit_tests.py   # run the unit tests to ensure all ready to go
 ```
 
+TODO:
+- still fussing with Sphinx autodoc
 
-with thanks for getting started by:
+
+with thanks for hints in getting started to:
 <https://medium.com/@shamir.stav_83310/making-your-c-library-callable-from-python-by-wrapping-it-with-cython-b09db35012a3>
 
