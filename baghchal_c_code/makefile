@@ -24,7 +24,8 @@ PYSOURCES =  mainPy.c \
              outputString.c \
              playOneTurn.c \
              valCmdLine.c \
-             moveStr2Array.c
+             moveStr2Array.c \
+             displayTextBoard.c
 
 
 SHLOBJECTS = $(SHLSOURCES:%.c=%.o)
@@ -34,7 +35,7 @@ PYOBJECTS = $(PYSOURCES:%.c=%.o)
 .SUFFIXES: ${SUFFIXES} .
 
 .c.o:
-	${CC} ${CFLAGS} -c $<
+	${CC} -c ${CFLAGS} -o $@ $<
 
 # text-based, interactive shell version
 shell:  $(SHLOBJECTS) $(HEADERS) makefile
@@ -47,9 +48,9 @@ www:    $(WWWOBJECTS) $(HEADERS) makefile
 	$(CC)  $(CFLAGS)  -o baghchalw  $(WWWOBJECTS)  $(LIBS)
 
 # text-based version callable from shell for testing but mainly meant to be called from python
-py:    $(PYOBJECTS) $(HEADERS) makefile libbc.a
-	# making Python version of BaghChal
-	$(CC)  $(CFLAGS)  -o pybaghchal  $(PYOBJECTS)  $(LIBS)
+# py:    $(PYOBJECTS) $(HEADERS) makefile libbc.a
+# 	# making Python version of BaghChal
+# 	$(CC)  $(CFLAGS)  -o pybaghchal  $(PYOBJECTS)  $(LIBS)
 
 libbc.a: $(PYOBJECTS) $(HEADERS) makefile
 	ar rcs $@ $^

@@ -33,8 +33,9 @@ class TestCfuncAccess(unittest.TestCase):
         """Test the operation of playing one turn from python to the C code."""
         inputline = 'player=T&skill=1&round=002&boardarray=1020100000000000000010001&goatstaken=00&move=a1%2Ca2'
         humanplayer, skill, gameround, boardarray, goatstaken, move = pbc.py_validateParams(inputline)
-        humanplayer, skill, gameround, boardarray, goatstaken, move, complastmove, winFlag = \
+        status, humanplayer, skill, gameround, boardarray, goatstaken, move, complastmove, winFlag = \
             pbc.py_playOneTurn(humanplayer, skill, gameround, np.array(boardarray).astype(np.int32), goatstaken, np.array(move).astype(np.int32), np.array([1,-1]).astype(np.int32), 0)
+        self.assertEqual(status, 0, "Should be 0")
         self.assertEqual(chr(humanplayer), "T", "Should be 'T'")
         self.assertEqual(skill, 1, "Should be 1")
         self.assertEqual(gameround, 3, "Should be 3")
@@ -43,6 +44,14 @@ class TestCfuncAccess(unittest.TestCase):
         self.assertNotEqual(boardarray[0], 1, "Should not be 1 (tiger moved away from here)")
         # move[] contains garbage values because computer was last player
         self.assertEqual(boardarray[complastmove[0]], 2, "Should be 2 (goat added to here)")
+    
+    
+    def test_moveStr2Array(self):
+        """Test the operation of converting entry to player-move-array, from python to the C code."""
+        moveString = 'a1,a2'
+        move = pbc.py_moveStr2Array( moveString.encode('utf-8') )
+        self.assertEqual(move[0], 0, "Should be 0 (starting position)")
+        self.assertEqual(move[1], 5, "Should be 1 (ending position)")
 
 
 if __name__ == '__main__':

@@ -52,4 +52,5 @@ int outputHTMLpage(char player, int skill, int round, int boardarray[25],
    int complastmove[2], int goatstaken, int winFlag);
 int outputString(char player, int skill, int round, int boardarray[25],
    int complastmove[2], int goatstaken, int winFlag);
-
+int displayTextBoard(char humanplayer, int skill, int round,
+   int boardarray[25], int complastmove[2], int goatstaken);
