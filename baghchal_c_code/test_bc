@@ -1,7 +1,0 @@
-#!/bin/csh
-
-echo player=T\&skill=1\&round=002\&boardarray=1000100000100002000000001\&goatstaken=00\&move=a1%2Cb1 | baghchalw
-
-#echo player=T\&skill=1\&round=002\&boardarray=1000100000100002000000001\&goatstaken=00\&move=a4%2ca3 | baghchalw
-
-#echo player=T\&skill=1\&round=001\&boardarray=1020100000000000000010001\&goatstaken=00\&move=a1%2Cb1 | baghchalw
