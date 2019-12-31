@@ -19,8 +19,8 @@ WWWSOURCES = mainWWW.c \
              valCmdLine.c \
              moveStr2Array.c
 
-PYSOURCES =  mainPy.c \
-             gameInit.c \
+#PYSOURCES =  mainPy.c 
+PYSOURCES =  gameInit.c \
              outputString.c \
              playOneTurn.c \
              valCmdLine.c \

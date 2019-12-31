@@ -41,8 +41,8 @@
 int main( int argc, char *argv[] ) {
  
    /* vars */
-   char humanplayer;
-   int skill, goatstaken=0, round=0, winFlag=0;
+   char humanplayer, winFlag=0;
+   int skill, goatstaken=0, round=0;
    int boardarray[25]={1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,1};
    int move[2]={-1,-1};  /* from boardarray element A to element B */
    int complastmove[2]={-1,-1};  /* from boardarray element A to element B */
@@ -52,13 +52,13 @@ int main( int argc, char *argv[] ) {
    /* function prototypes */
    int initGameMovementRules();
    int playOneTurn( char *humanplayer, int *skill, int *round, int *boardarray,
-      int *move, int *complastmove, int *goatstaken, int *winFlag );
+      int *move, int *complastmove, int *goatstaken, char *winFlag );
    int moveStr2Array( char *moveString, int *move, int moveStringLen );
    int invalidMoveEntry( char *moveString );
    int validateParams( char *inputline, char *humanplayer, int *skill,
       int *round, int boardarray[25], int *goatstaken, int move[2] );
    int outputHTMLpage(char player, int skill, int round, int boardarray[25],
-      int complastmove[2], int goatstaken, int winFlag);
+      int complastmove[2], int goatstaken, char winFlag);
    
  
    /* define game movement rules (set up some structs to do this) */

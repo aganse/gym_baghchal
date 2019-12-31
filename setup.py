@@ -12,8 +12,8 @@ examples_extension = Extension(
 setup(
     name="rl_bagh_chal",
     ext_modules=cythonize([examples_extension], compiler_directives={'language_level' : "3"}),
-    install_requires=[
-        'numpy',
-    ],
+    #install_requires=[
+    #    'numpy',
+    #],
 )
 

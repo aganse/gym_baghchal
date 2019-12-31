@@ -2,7 +2,7 @@
 #include "baghchal.h"
 
 int outputHTMLpage(char player, int skill, int round, int boardarray[25],
-                    int complastmove[2], int goatstaken, int winFlag) {
+                    int complastmove[2], int goatstaken, char winFlag) {
 
   int i;
   char *Piece[]={ BC_PATH EMPTYPIC, BC_PATH TIGERPIC, BC_PATH GOATPIC };

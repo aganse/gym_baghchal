@@ -42,15 +42,21 @@ struct boardpoint {
 
 /* function prototypes */
 int initGameMovementRules();
+int validate_player_move(char *player, int move[2], int *round, int boardarray[25]);
+int place_move_in_boardarray( char *player, int *round, int move[2],
+                              int boardarray[25], int *goatstaken );
+int determine_comp_move( char *player, int boardarray[], int *skill, int move[2],
+                         int *round );
+int check_for_win( char *player, int boardarray[], int *goatstaken );
 int playOneTurn( char *humanplayer, int *skill, int *round, int *boardarray,
-   int *move, int *complastmove, int *goatstaken, int *winFlag );
+   int *move, int *complastmove, int *goatstaken, char *winFlag );
 int moveStr2Array( char *moveString, int *move, int moveStringLen );
 int invalidMoveEntry( char *moveString );
 int validateParams( char *inputline, char *humanplayer, int *skill,
    int *round, int boardarray[25], int *goatstaken, int move[2] );
 int outputHTMLpage(char player, int skill, int round, int boardarray[25],
-   int complastmove[2], int goatstaken, int winFlag);
+   int complastmove[2], int goatstaken, char winFlag);
 int outputString(char player, int skill, int round, int boardarray[25],
-   int complastmove[2], int goatstaken, int winFlag);
+   int complastmove[2], int goatstaken, char winFlag);
 int displayTextBoard(char humanplayer, int skill, int round,
    int boardarray[25], int complastmove[2], int goatstaken);

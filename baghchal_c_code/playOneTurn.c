@@ -5,17 +5,11 @@
 #include "baghchal.h"
 
 int playOneTurn( char *humanplayer, int *skill, int *round, int *boardarray,
-   int *move, int *complastmove, int *goatstaken, int *winFlag ) {
+   int *move, int *complastmove, int *goatstaken, char *winFlag ) {
 
-   /*
-   printf("playone inp:  h=%c, s=%d, r=%d, m=%d-%d, c=%d-%d, g=%d, w=%d\n",
-      *humanplayer, *skill, *round, move[0], move[1], complastmove[0], complastmove[1], *goatstaken, *winFlag);
-   printf("             b=");
-   for(int i=0;i<25;i++) printf("%d",boardarray[i]);
-   printf("\n");
-   */
+   srand(time(NULL) % 32767);     /* time-based random seed between 0 & 32767 */
 
-  /* function prototypes */
+   /* function prototypes */
    int validate_player_move(char *humanplayer, int move[2], int *round,
       int *boardarray);
    int place_move_in_boardarray(char *player, int *round, int *move,
@@ -26,7 +20,7 @@ int playOneTurn( char *humanplayer, int *skill, int *round, int *boardarray,
 
    /* set compplayer to opposite of humanplayer - just a way to keep them
    straight, it got too confusing otherwise... */
-   char compplayer[1]; /*(still not sure why I couldnt use "char *compplayer")*/
+   char compplayer[1];
    *compplayer = (*humanplayer=='T')?'G':'T';
  
 
@@ -185,6 +179,7 @@ int place_move_in_boardarray(char *player, int *round, int move[2],
 
 int determine_comp_move(char *player, int boardarray[], int *skill,
    int move[2], int *round ) {
+   srand(time(0));
 
    int randint(int max);
    int i, j, b=1, m, n, blankspot[10], blankcnt, spotcnt, jumpFlag=0;
@@ -235,6 +230,7 @@ int determine_comp_move(char *player, int boardarray[], int *skill,
             if(boardarray[i]==0) blankcnt++; /*count blank spots left on board*/
 
          n=randint(blankcnt);  /* choose randomly from those blank spots */
+         printf("rand: %d\n", n);
 
          /* find n-th blank spot =b in boardarray */
          for(spotcnt=0, i=0; i<25 && spotcnt<n; i++)
@@ -269,7 +265,6 @@ int check_for_win(char *player, int boardarray[], int *goatstaken) {
 
 /* returns random integer between 1 and specified max (inclusive) */
 int randint(int max) {
-   srand(time(NULL) % 32767);     /* time-based random seed between 0 & 32767 */
    return 1+(int) max*(rand()/(RAND_MAX+1.0));        /* RAND_MAX in stdlib.h */
 }
 
