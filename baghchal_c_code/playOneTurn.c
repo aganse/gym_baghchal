@@ -98,6 +98,8 @@ int validate_player_move(char *player, int move[2], int *round, int boardarray[2
    */
 
    int i, ok=0;
+   int status;
+   status = initGameMovementRules();
 
    if( *player=='G' && *round<21 ) {
       if( boardarray[ move[0] ] == 0 /*(blank)*/ ) ok=1;
@@ -143,6 +145,8 @@ int place_move_in_boardarray(char *player, int *round, int move[2],
    int boardarray[25], int *goatstaken) {
 
    int i;
+   int status;
+   status = initGameMovementRules();
 
    if (*player=='G' && *round < 21) {
       /* just add new goat to the blank (already validated) spot on the board */
@@ -180,6 +184,8 @@ int place_move_in_boardarray(char *player, int *round, int move[2],
 int determine_comp_move(char *player, int boardarray[], int *skill,
    int move[2], int *round ) {
    srand(time(0));
+   int status;
+   status = initGameMovementRules();
 
    int randint(int max);
    int i, j, b=1, m, n, blankspot[10], blankcnt, spotcnt, jumpFlag=0;

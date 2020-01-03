@@ -11,7 +11,7 @@ pybaghchal: setup.py $(CY_DIR)/pybaghchal.pyx $(LIB_DIR)/libbc.a
 	python3 setup.py build_ext --inplace && rm -f $(CY_DIR)/pybaghchal.c && rm -Rf build
 
 install:
-	pip install -e .
+	pip install --upgrade -e .
 
 $(LIB_DIR)/libbc.a:
 	make -C $(LIB_DIR) libbc.a
