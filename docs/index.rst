@@ -3,10 +3,6 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-.. automodule:: gym_baghchal.pybaghchal
-   :members:
-.. automodule:: tests.test_pybaghchal
-   :members:
 
 .. toctree::
    :maxdepth: 2

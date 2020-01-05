@@ -1,5 +1,15 @@
-Tentative list of bugs to fix...
 
+The autodoc directives to put back at top of docs/index.rst:
+------------------------------------------------------------
+.. automodule:: gym_baghchal.pybaghchal
+   :members:
+.. automodule:: tests.test_pybaghchal
+   :members:
+
+
+
+Tentative list of bugs in baghchal_c_code:
+------------------------------------------
 1. when a tiger has no move, is it doing wrong thing and moving anyway?
 
 2. goats need to know they've won - game needs to know that tigers cannot move,
