@@ -1,4 +1,4 @@
-import rl_bagh_chal.pybaghchal as pbc
+import gym_baghchal.pybaghchal as pbc
 
 
 def playTurn(humanplayer, skill, gameround, boardarray, goatstaken, move, complastmove, winflag):

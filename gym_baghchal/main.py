@@ -1,8 +1,8 @@
 from random import random
 import sys
 import numpy as np
-import rl_bagh_chal.pybaghchal as pbc
-from rl_bagh_chal.playTurn import playTurn
+import gym_baghchal.pybaghchal as pbc
+from gym_baghchal.playTurn import playTurn
 
 
 # Ask player for skill level and whether they want to be tiger or goat

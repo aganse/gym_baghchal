@@ -16,7 +16,7 @@ cd gym_baghchal
 python3 -m venv .venv 
 source .venv/bin/activate
 pip install cython  # unfortunately must be done manually first before installing rl-bagh-chal
-make                # build the rl-bagh-chal C and cython code
+make                # build baghchal C and cython code
 pip install .       # now install py_bagh_chal and the rest of its dependencies
 python run_unit_tests.py   # run the unit tests to ensure all ready to go
 ```

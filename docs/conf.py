@@ -13,7 +13,7 @@
 import os
 import sys
 sys.path.insert(0, os.path.abspath('..'))
-#sys.path.insert(0, os.path.abspath('../rl_bagh_chal'))
+#sys.path.insert(0, os.path.abspath('../gym_baghchal'))
 #sys.path.insert(0, os.path.abspath('../baghchal_c_code'))
 #sys.path.insert(0, os.path.abspath('../tests'))
 
@@ -22,7 +22,7 @@ master_doc = 'index'
 
 # -- Project information -----------------------------------------------------
 
-project = 'RL-Bagh-Chal'
+project = 'Gym-BaghChal'
 copyright = '2019, Andy Ganse'
 author = 'Andy Ganse'
 

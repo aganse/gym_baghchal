@@ -1,6 +1,6 @@
 import unittest
 import numpy as np
-import rl_bagh_chal.pybaghchal as pbc
+import gym_baghchal.pybaghchal as pbc
 
 
 class TestCfuncAccess(unittest.TestCase):

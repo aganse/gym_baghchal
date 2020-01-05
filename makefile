@@ -1,14 +1,15 @@
 LIB_DIR = baghchal_c_code
-CY_DIR = rl_bagh_chal
+BC_DIR = gym_baghchal
 DOC_DIR = docs
+TEST_DIR = tests
 
 default: pybaghchal install test doc
 
 baghchal: $(LIB_DIR)/baghchal
 	make -C $(LIB_DIR) shell py
 
-pybaghchal: setup.py $(CY_DIR)/pybaghchal.pyx $(LIB_DIR)/libbc.a
-	python3 setup.py build_ext --inplace && rm -f $(CY_DIR)/pybaghchal.c && rm -Rf build
+pybaghchal: setup.py $(BC_DIR)/pybaghchal.pyx $(LIB_DIR)/libbc.a
+	python3 setup.py build_ext --inplace && rm -f $(BC_DIR)/pybaghchal.c && rm -Rf build
 
 install:
 	pip install --upgrade -e .
@@ -23,7 +24,7 @@ test: tests/*
 	python -m unittest discover
 
 clean:
-	rm -rf rl_bagh_chal/*.so rl_bagh_chal/*.c rl_bagh_chal/*.pyc
-	rm -rf rl_bagh_chal/__pycache__ tests/__pycache__ build *.egg-info
+	make -C $(BC_DIR) clean
+	make -C $(TEST_DIR) clean
 	make -C $(LIB_DIR) clean
 	make -C $(DOC_DIR) clean
