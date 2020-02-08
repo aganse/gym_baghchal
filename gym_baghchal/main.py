@@ -46,14 +46,12 @@ while winflag==0:
     )
 
     if winflag==0:
-        # request move
         moveStr = input('Enter next move:')
         if moveStr == 'q':
             # quit game
             sys.exit()
 
         # validate entered move, and set "move" array out of that.
-        # could use C invalidMoveEntry and moveStr2Array functions?
         move = pbc.py_moveStr2Array( moveStr.encode('utf-8') )       
 
     else:

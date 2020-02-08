@@ -10,6 +10,8 @@ class BaghChalEnv(gym.Env):
     def __init__(self):
         self.action_space = spaces.Discrete(9)
         self.observation_space = spaces.Discrete(9*3*2) # flattened
+
+
     def step(self, action):
         done = False
         reward = 0
@@ -48,9 +50,20 @@ class BaghChalEnv(gym.Env):
                 
         return self.state, reward, done, {}
     def reset(self):
-        self.state = {}
-        self.state['board'] = [0, 0, 0, 0, 0, 0, 0, 0, 0]
-        self.state['on_move'] = 1
+        # self.state = {}
+        # self.state['board'] = [0, 0, 0, 0, 0, 0, 0, 0, 0]
+        # self.state['on_move'] = 1
+        self.humanplayer = ord('T')
+        self.skill = 1
+        self.gameround = 0
+        self.boardarray = [1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,1]
+        self.boardarray = np.array(boardarray).astype(np.int32)  # to ease cython
+        self.goatstaken = 0
+        self.move = [-1, -1]  # required default for game start
+        self.move = np.array(move).astype(np.int32)  # to ease cython
+        self.complastmove = [-1, -1]
+        self.complastmove = np.array(complastmove).astype(np.int32)  # to ease cython
+        self.winflag = 0
         return self.state
     def render(self, mode='human', close=False):
         if close:
