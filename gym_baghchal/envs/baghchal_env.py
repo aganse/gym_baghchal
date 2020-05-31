@@ -2,14 +2,17 @@ import gym
 from gym import spaces
 import numpy as np
 
+from gym_baghchal.playTurn import playTurn
+
 class BaghChalEnv(gym.Env):
     metadata = {'render.modes': ['human']}
     
-    symbols = ['O', ' ', 'X'];
+    symbols = ['O', ' ', 'X']
 
     def __init__(self):
-        self.action_space = spaces.Discrete(9)
-        self.observation_space = spaces.Discrete(9*3*2) # flattened
+        self.action_space = spaces.Discrete(25)
+        self.observation_space = spaces.Discrete(25*3*2) # flattened
+        #self.observation_space = spaces.Discrete(9*3*2) # flattened
 
 
     def step(self, action):
@@ -22,6 +25,24 @@ class BaghChalEnv(gym.Env):
         board = self.state['board']
         proposed = board[square]
         om = self.state['on_move']
+
+        # shall i put playTurn() here?
+        # then status output will include invalidMove and winFlag...
+        boardarray = np.array(boardarray).astype(np.int32)  # to ease cython
+        move = np.array(move).astype(np.int32)  # to ease cython
+        complastmove = np.array(complastmove).astype(np.int32)  # to ease cython
+        status, humanplayer, skill, gameround, boardarray, goatstaken, move, complastmove, winflag = \
+            playTurn(
+                humanplayer,
+                skill,
+                gameround,
+                boardarray,
+                goatstaken,
+                move,
+                complastmove,
+                winflag
+            )
+
         if (proposed != 0):  # wrong player, not empty
             print("illegal move ", action, ". (square occupied): ", square)
             done = True
@@ -49,20 +70,20 @@ class BaghChalEnv(gym.Env):
                 done = True
                 
         return self.state, reward, done, {}
+
+
     def reset(self):
-        # self.state = {}
-        # self.state['board'] = [0, 0, 0, 0, 0, 0, 0, 0, 0]
-        # self.state['on_move'] = 1
+        self.state = {}
+        self.state['board'] = [1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,1]  #boardarray 
+        # oops, on_move is not gameround - replace gameround:
+        self.state['on_move'] = 1  # 
+        self.gameround = 0
+
         self.humanplayer = ord('T')
         self.skill = 1
-        self.gameround = 0
-        self.boardarray = [1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,1]
-        self.boardarray = np.array(boardarray).astype(np.int32)  # to ease cython
         self.goatstaken = 0
         self.move = [-1, -1]  # required default for game start
-        self.move = np.array(move).astype(np.int32)  # to ease cython
         self.complastmove = [-1, -1]
-        self.complastmove = np.array(complastmove).astype(np.int32)  # to ease cython
         self.winflag = 0
         return self.state
     def render(self, mode='human', close=False):
