@@ -5,8 +5,8 @@ TEST_DIR = tests
 
 default: pybaghchal install test doc
 
-baghchal: $(LIB_DIR)/baghchal
-	make -C $(LIB_DIR) shell py
+baghchal: $(LIB_DIR)/*.c
+	make -C $(LIB_DIR) shell
 
 pybaghchal: setup.py $(BC_DIR)/pybaghchal.pyx $(LIB_DIR)/libbc.a
 	python3 setup.py build_ext --inplace && rm -f $(BC_DIR)/pybaghchal.c && rm -Rf build
